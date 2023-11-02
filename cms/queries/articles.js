@@ -1,5 +1,5 @@
 export default gql`
-query Post {
+query Articles {
     allArticles {
       id
       title
@@ -11,4 +11,4 @@ query Post {
       count
     }
 }
-`
+`;

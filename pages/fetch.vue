@@ -1,11 +1,9 @@
 <script setup>
 // SSR
-import Post from '@/cms/queries/post'
-const { data, pending, error, refresh } = await useLazyAsyncQuery(Post)
-
+import Articles from '@/cms/queries/articles'
+const { data, pending, error, refresh } = await useLazyAsyncQuery(Articles)
 console.log(data)
 </script>
-
 <template>
     <v-container class="bg-surface-variant" v-if="!pending">
         <h1>
