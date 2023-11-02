@@ -5,8 +5,10 @@
             This is a components
         </AppInfo>
         <div class="image">
-            <img src="~assets/chat.png" alt="chat"/>
+            <img src="~assets/chat.png" alt="chat" />
         </div>
-        <NuxtLink to="/store">Store</NuxtLink> 
+        <v-btn to="/fetch">
+            Blog
+        </v-btn>
     </div>
 </template>
