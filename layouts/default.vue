@@ -8,14 +8,7 @@
                         max-height="180" max-width="180" contain>
                     </v-img>
                 </div>
-                <div style="width:100%;" class="d-flex align-center justify-end">
-                    <v-btn to="/" variant="text" class="mt-2 ma-2" color="primary">
-                        Accueil
-                    </v-btn>
-                    <v-btn to="/fetch" class="mt-2 ma-2" color="primary">
-                        Blog
-                    </v-btn>
-                </div>
+                <MainMenu />
             </v-container>
         </v-app-bar>
         <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
@@ -24,6 +17,7 @@
         <v-footer>Made with amour</v-footer>
     </v-app>
 </template>
+  
 <style scoped>
-::v-deep .v-toolbar__content {}
+:deep(.v-toolbar__content) {}
 </style>
