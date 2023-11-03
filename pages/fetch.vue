@@ -5,11 +5,11 @@ const { data, pending, error, refresh } = await useLazyAsyncQuery(Articles)
 console.log(data)
 </script>
 <template>
-    <v-container class="bg-surface-variant" v-if="!pending">
+    <v-container class="bg-surface-variant">
         <h1>
             Mes recettes
         </h1>
-        <v-row>
+        <v-row v-if="!pending">
             <v-col cols="12" sm="4" v-for="item in data.allArticles" :key="item.id">
                 <v-card width="350" outlined>
                     <v-card-title>{{ item.title }}</v-card-title>
@@ -26,4 +26,5 @@ console.log(data)
         <v-btn to="/" color="secondary" size="large">Back home</v-btn>
     </v-container>
 </template>
+
 
