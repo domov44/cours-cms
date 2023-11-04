@@ -11,13 +11,17 @@
                 <MainMenu />
             </v-container>
         </v-app-bar>
-        <v-main class="d-flex align-center justify-center" style="min-height: 300px;">
+        <v-main class="d-flex flex-column align-center justify-center" style="min-height: 300px;">
             <NuxtPage />
         </v-main>
         <v-footer>Made with amour</v-footer>
     </v-app>
 </template>
   
-<style scoped>
-:deep(.v-toolbar__content) {}
+<style>
+@media (min-width: 1920px) {
+    .v-container {
+        max-width: 1200px !important;
+    }
+}
 </style>
