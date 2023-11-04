@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-app-bar app>
+        <v-app-bar app color="background">
             <v-container class="d-flex justify-space-between align-center">
                 <div style="width:100%;">
                     <v-img class="mx-2"
@@ -23,5 +23,14 @@
     .v-container {
         max-width: 1200px !important;
     }
+}
+
+a.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-btn--size-large.v-btn--variant-elevated {
+    color: rgb(var(--v-theme-background)) !important;
+}
+
+::selection{
+    color:rgb(var(--v-theme-background));
+    background: rgb(var(--v-theme-primary));
 }
 </style>

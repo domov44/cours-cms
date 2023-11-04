@@ -1,9 +1,9 @@
 <template>
     <Hero>
         <div style="width:60%;">
-            <Pastille>Depuis n'importe où</Pastille>
+            <span>Depuis n'importe où</span>
             <h1 class="text-h2 font-weight-bold mb-4">Restez connecté</h1>
-            <p class="text-body-1">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en
+            <p class="text-body-1 mb-4">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en
                 page avant impression.
                 Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme
                 assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte.</p>
