@@ -13,8 +13,6 @@ export default defineNuxtPlugin((app) => {
             secondary: '#E96B6A',
             background: '#efeefa',
             surface: '#efeefa',
-            accent: 'red',
-            anchor: 'red',
             red: "#FF5c4E",
           },
         },

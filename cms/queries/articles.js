@@ -4,8 +4,18 @@ query Articles {
       id
       title
       _status
-      _firstPublishedAt
+      _publishedAt
+      _updatedAt
+      postDate
       content
+      excerp
+      author
+      seoMetaData {
+        image {
+          url
+          alt
+        }
+      }
     }
     _allArticlesMeta {
       count
