@@ -5,13 +5,13 @@ const { data, pending, error, refresh } = await useLazyAsyncQuery(Articles)
 console.log(data)
 </script>
 <template>
-    <v-container>
-        <h1>
-            Nos articles
-        </h1>
-        <v-row v-if="!pending">
-            <v-col cols="12" sm="4" v-for="articles in data.allArticles" :key="articles.id">
-                <v-card width="350" outlined>
+    <Hero>
+        <div>
+            <h1>
+                Les articles
+            </h1>
+            <div v-if="!pending" class="v-grid">
+                <v-card v-for="articles in data.allArticles" :key="articles.id" width="350" outlined>
                     <v-img class="align-end text-white" height="200" alt={{articles.seoMetaData.alt}}
                         :src="articles.seoMetaData.image.url" cover>
                         <v-card-title>{{ articles.title }}</v-card-title>
@@ -23,9 +23,9 @@ console.log(data)
                         <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
                     </v-card-actions>
                 </v-card>
-            </v-col>
-        </v-row>
-    </v-container>
+            </div>
+        </div>
+    </Hero>
 </template>
 
 
