@@ -8,12 +8,12 @@
                 page avant impression.
                 Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme
                 assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte.</p>
-            <v-btn color="primary" size="large" to="/fetch">
+            <v-btn color="primary" size="large" to="/blog">
                 Découvrir le blog
             </v-btn>
         </div>
         <div style="width:40%;">
-            <img style="width:100%;" src="web-template.png">
+            <img style="width:100%;" src="landing-3d.webp">
         </div>
     </Hero>
     <Hero>
