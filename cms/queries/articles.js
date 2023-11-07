@@ -2,6 +2,7 @@ export default gql`
 query Articles {
     allArticles {
       id
+      blogSlug
       title
       _status
       _publishedAt
@@ -21,6 +22,7 @@ query Articles {
       count
     }
     article {
+      id
       blogSlug
       content
       introduction

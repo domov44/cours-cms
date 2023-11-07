@@ -30,7 +30,7 @@
                     <v-card-subtitle>{{ articles.postDate }}</v-card-subtitle>
                     <v-card-text>{{ articles.excerp }}</v-card-text>
                     <v-card-actions>
-                        <v-btn to="/" color="primary" size="large">Lire l'article</v-btn>
+                        <v-btn :to="'/blog/' + articles.blogSlug" color="primary" size="large">Lire l'article</v-btn>
                         <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
                     </v-card-actions>
                 </v-card>
