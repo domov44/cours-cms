@@ -1,10 +1,10 @@
 <template>
     <v-app>
-        <Header/>
+        <Header />
         <v-main class="d-flex flex-column align-center justify-center" style="min-height: 300px;">
             <NuxtPage />
         </v-main>
-        <v-footer>Made with amour</v-footer>
+        <Footer />
     </v-app>
 </template>
   

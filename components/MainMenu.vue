@@ -3,7 +3,7 @@
     <v-btn to="/" variant="text" class="mt-2 ma-2" color="primary">
       Accueil
     </v-btn>
-    <v-btn to="/blog" class="mt-2 ma-2" color="primary">
+    <v-btn to="/blog" variant="text" class="mt-2 ma-2" color="primary">
       Blog
     </v-btn>
   </div>
