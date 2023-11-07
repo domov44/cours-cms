@@ -31,3 +31,34 @@ a::after {
 a:hover::after {
   width: 10%;
 }
+
+.hero{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5% 0 5%;
+  min-height: 80vh;
+  min-width: 100%;
+}
+
+@media (min-width: 1920px) {
+  .v-container {
+      max-width: 1200px !important;
+  }
+}
+
+a.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-btn--size-large.v-btn--variant-elevated, button.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-btn--size-large.v-btn--variant-elevated {
+  color: rgb(var(--v-theme-background)) !important;
+}
+
+::selection{
+  color:rgb(var(--v-theme-background));
+  background: rgb(var(--v-theme-primary));
+}
+
+.close-button {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+}

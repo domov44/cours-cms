@@ -1,6 +1,6 @@
 <template>
     <section class="hero">
-        <v-container class="d-flex justify-space-between align-center">
+        <v-container class="d-row justify-space-between align-center text-center">
             <slot />
         </v-container>
     </section>

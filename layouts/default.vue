@@ -7,20 +7,3 @@
         <Footer />
     </v-app>
 </template>
-  
-<style>
-@media (min-width: 1920px) {
-    .v-container {
-        max-width: 1200px !important;
-    }
-}
-
-a.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-btn--size-large.v-btn--variant-elevated {
-    color: rgb(var(--v-theme-background)) !important;
-}
-
-::selection{
-    color:rgb(var(--v-theme-background));
-    background: rgb(var(--v-theme-primary));
-}
-</style>

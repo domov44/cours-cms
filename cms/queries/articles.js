@@ -21,19 +21,5 @@ query Articles {
     _allArticlesMeta {
       count
     }
-    article {
-      id
-      blogSlug
-      content
-      introduction
-      title
-      seoMetaData {
-        image {
-          alt
-          url
-        }
-      }
-      author
-    }
 }
 `;
