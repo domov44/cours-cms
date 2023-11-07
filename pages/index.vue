@@ -1,6 +1,6 @@
 <template>
     <Hero>
-        <div style="width:60%;">
+        <div style="width:60%; position:relative">
             <span>Depuis n'importe où</span>
             <h1 class="text-h2 font-weight-bold mb-4">Restez connecté</h1>
             <p class="text-body-1 mb-4">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise
@@ -11,9 +11,10 @@
             <v-btn color="primary" size="large" to="/blog">
                 Découvrir le blog
             </v-btn>
+            <img class="saturn-img" src="saturn.webp">
         </div>
         <div style="width:40%;">
-            <img style="width:100%;" src="landing-3d.webp">
+            <img class="hero-img" src="landing-3d.webp">
         </div>
     </Hero>
     <Hero>
@@ -21,7 +22,7 @@
             <h2>
                 Les derniers articles
             </h2>
-            <div v-if="!pending" class="v-grid">
+            <div v-if="!pending" class="v-grid" style="position: relative;">
                 <v-card v-for="articles in data.allArticles" :key="articles.id" width="350" outlined>
                     <v-img class="align-end text-white" height="200" alt={{articles.seoMetaData.alt}}
                         :src="articles.seoMetaData.image.url" cover>
@@ -34,6 +35,8 @@
                         <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
                     </v-card-actions>
                 </v-card>
+                <img class="planet-img" src="planet.webp">
+                <img class="controller-img" src="controller.webp">
             </div>
         </div>
     </Hero>
@@ -50,7 +53,7 @@ console.log(data)
     display: grid;
     margin-top: 10px;
     font-size: 0;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     grid-gap: 20px 22px;
     justify-content: center;
@@ -60,11 +63,41 @@ console.log(data)
     margin-right: auto;
 }
 
-@media only screen and (max-width: 1280px){
-.v-grid {
-    grid-template-columns: 1fr 1fr;
-    max-width: 900px;
-    grid-gap: 15px 18px;
+.hero-img {
+    z-index: 20;
+    width: 100%;
 }
+
+.saturn-img {
+    top: -100px;
+    left: -150px;
+    z-index: 20;
+    width: 100px;
+    position: absolute;
+}
+
+.planet-img {
+    top:50%;
+    right: -200px;
+    z-index: 20;
+    width: 100px;
+    position: absolute;
+}
+
+.controller-img {
+    top:20%;
+    left: -200px;
+    z-index: 20;
+    width: 100px;
+    position: absolute;
+}
+
+
+@media only screen and (max-width: 1280px) {
+    .v-grid {
+        grid-template-columns: 1fr 1fr;
+        max-width: 900px;
+        grid-gap: 15px 18px;
+    }
 }
 </style>

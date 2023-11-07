@@ -30,35 +30,3 @@
         </v-container>
     </v-footer>
 </template>
-
-<style>
-.v-footer {
-    display: block !important;
-}
-
-a{
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    line-height: 1.2;
-    color: var(--color-title);
-}
-
-a::after {
-    content: '';
-    background-color: red;
-    width: 100%;
-    height: 2px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    transition: 0.3s;
-    border-radius: 20px;
-}
-
-a:hover::after {
-    width: 10%;
-}
-</style>
