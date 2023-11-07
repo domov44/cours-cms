@@ -8,6 +8,7 @@
                 </v-img>
             </div>
             <MainMenu />
+            <SwitchTheme />
         </v-container>
     </v-app-bar>
 </template>
