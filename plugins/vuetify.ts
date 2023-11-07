@@ -22,6 +22,7 @@ export default defineNuxtPlugin((app) => {
             secondary: '#3D387C',
             background: '#110f1d',
             surface: '#03010A',
+            success: '#3a956d',
           },
         },
       },

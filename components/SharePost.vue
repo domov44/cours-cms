@@ -20,7 +20,7 @@
         </div>
       </v-card>
     </v-dialog>
-    <v-alert v-model="alert"  type="success" border="start" closable class="alert">
+    <v-alert v-model="alert" type="success" border="start" closable class="alert">
       URL copiée avec succès !
     </v-alert>
   </div>
@@ -29,7 +29,7 @@
 <style>
 .alert {
   z-index: 999999;
-  position: fixed;
+  position: fixed !important;
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
