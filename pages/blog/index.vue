@@ -11,7 +11,7 @@ console.log(data)
             <p class="text-body-1 mb-4">Quoi de neuf dans les technos web ?</p>
         </div>
         <div style="width:20%;">
-            <img style="width:100%;" src="earth.webp">
+            <img style="width:100%;" src="">
         </div>
     </Hero>
     <Hero>
