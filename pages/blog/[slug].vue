@@ -1,11 +1,10 @@
 <template v-if="route && !pending">
     <PostHero v-if="data">
-        <h1 class="text-h2">{{ data.article.title }}</h1>
-        <p class="text">{{ data.article.introduction }}</p>
-        <p class="text">{{ data.article.author }} // {{ data.article._publishedAt }}</p>
+        <h1 class="text-h2">{{ data.post.titlePost }}</h1>
+        <p class="text">{{ data.post.introduction[0].richtext }}</p>
+        <p class="text">{{ data.post.author }}</p>
         <SharePost />
-        <v-img class="align-end text-white" alt={{data.article.seoMetaData.alt}} :src="data.article.seoMetaData.image.url"
-            cover>
+        <v-img alt={{data.post.seo[0].seo.image.alt}} :src="data.post.seo[0].seo.image.url" cover>
         </v-img>
     </PostHero>
 </template>

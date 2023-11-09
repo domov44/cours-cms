@@ -22,16 +22,16 @@
             <h2>
                 Les derniers articles
             </h2>
-            <div v-if="!pending" class="v-grid" style="position: relative;">
-                <v-card v-for="articles in data.allArticles" :key="articles.id" width="350" outlined>
-                    <v-img class="align-end text-white" height="200" alt={{articles.seoMetaData.alt}}
-                        :src="articles.seoMetaData.image.url" cover>
-                        <v-card-title>{{ articles.title }}</v-card-title>
+            <div v-if="!pending" class="v-grid">
+                <v-card v-for="posts in data.allPosts" :key="posts.id" width="350" outlined>
+                    <v-img class="align-end text-white" height="200" alt={{posts.seo[0].seo.image.alt}}
+                        :src="posts.seo[0].seo.image.url" cover>
+                        <v-card-title>{{ posts.titlePost }}</v-card-title>
                     </v-img>
-                    <v-card-subtitle>{{ articles.postDate }}</v-card-subtitle>
-                    <v-card-text>{{ articles.excerp }}</v-card-text>
+                    <v-card-subtitle>{{ posts.postDate }}</v-card-subtitle>
+                    <v-card-text>{{ posts.excerp[0].richtext }}</v-card-text>
                     <v-card-actions>
-                        <v-btn :to="'/blog/' + articles.blogSlug" color="primary" size="large">Lire l'article</v-btn>
+                        <v-btn :to="'/blog/' + posts.postSlug" color="primary" size="large">Lire l'article</v-btn>
                         <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
                     </v-card-actions>
                 </v-card>
@@ -43,11 +43,10 @@
 </template>
 <script setup>
 // SSR
-import Articles from '@/cms/queries/articles'
-const { data, pending, error, refresh } = await useLazyAsyncQuery(Articles)
+import Posts from '@/cms/queries/posts'
+const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
 console.log(data)
 </script>
-
 <style>
 .v-grid {
     display: grid;
@@ -77,7 +76,7 @@ console.log(data)
 }
 
 .planet-img {
-    top:50%;
+    top: 50%;
     right: -200px;
     z-index: 20;
     width: 100px;
@@ -85,7 +84,7 @@ console.log(data)
 }
 
 .controller-img {
-    top:20%;
+    top: 20%;
     left: -200px;
     z-index: 20;
     width: 100px;
