@@ -8,9 +8,11 @@ query Header{
         url
       }
     }
-    logo {
-      url
-      alt
+    logoDuSiteWeb {
+      fichierLogo {
+        url
+        alt
+      }
     }
     id
   }

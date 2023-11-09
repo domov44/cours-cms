@@ -31,7 +31,7 @@ query singlepost($slug: String) {
     }
 
     introduction {
-      richtext
+      richtext(markdown: true)
     }
     postSlug
     titlePost
