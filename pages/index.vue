@@ -11,10 +11,10 @@
             <v-btn color="primary" size="large" to="/blog">
                 Découvrir le blog
             </v-btn>
-            <img class="saturn-img" src="saturn.webp">
+            <img class="saturn-img" src="">
         </div>
         <div style="width:40%;">
-            <img class="hero-img" src="landing-3d.webp">
+            <img class="hero-img" src="">
         </div>
     </Hero>
     <Hero>
@@ -35,8 +35,8 @@
                         <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
                     </v-card-actions>
                 </v-card>
-                <img class="planet-img" src="planet.webp">
-                <img class="controller-img" src="controller.webp">
+                <img class="planet-img" src="">
+                <img class="controller-img" src="">
             </div>
         </div>
     </Hero>
