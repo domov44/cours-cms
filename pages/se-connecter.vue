@@ -14,7 +14,7 @@
 
             </v-form>
             <div class="mt-2">
-                <v-btn to="/créer-un-compte" size="large" variant="tonal" color="secondary" block class="mt-2">Créer un compte</v-btn>
+                <v-btn to="/register" size="large" variant="tonal" color="secondary" block class="mt-2">Créer un compte</v-btn>
             </div>
         </v-sheet>
     </div>

@@ -2,7 +2,7 @@
     <div class="d-flex align-center justify-center" style="height: 100vh">
         <v-sheet width="400" class="mx-auto">
             <v-form fast-fail @submit.prevent="login">
-                <h1 class="text-h4 font-weight-bold">Ccréer un compte</h1>
+                <h1 class="text-h4 font-weight-bold">Créer un compte</h1>
                 <v-text-field :readonly="loading" :rules="[required]" variant="outlined" v-model="username"
                     label="Identifiant ou email"></v-text-field>
 
