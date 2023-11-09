@@ -11,10 +11,10 @@
             <v-btn color="primary" size="large" to="/blog">
                 Découvrir le blog
             </v-btn>
-            <img class="saturn-img" src="">
+            <img class="saturn-img" src="https://www.datocms-assets.com/110963/1699538726-saturn.webp">
         </div>
         <div style="width:40%;">
-            <img class="hero-img" src="">
+            <img class="hero-img" src="https://www.datocms-assets.com/110963/1699538711-landing-3d.webp">
         </div>
     </Hero>
     <Hero>
@@ -35,8 +35,8 @@
                         <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
                     </v-card-actions>
                 </v-card>
-                <img class="planet-img" src="">
-                <img class="controller-img" src="">
+                <img class="planet-img" src="https://www.datocms-assets.com/110963/1699538721-planet.webp">
+                <img class="controller-img" src="https://www.datocms-assets.com/110963/1699538704-controller.webp">
             </div>
         </div>
     </Hero>
