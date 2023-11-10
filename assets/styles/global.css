@@ -1,6 +1,29 @@
 :root {
-  --primary: #4B5695;
-  --secondary: #1a1d2a;
+  --primary: rgb(var(--v-theme-primary));
+  --toastify-color-light: rgb(var(--v-theme-surface)) !important;
+  --toastify-color-dark: rgb(var(--v-theme-surface)) !important;
+  --toastify-color-info: var(--v-primary-base);
+  --toastify-color-progress-success: rgb(var(--v-theme-success)) !important;
+  --toastify-color-warning: var(--v-warning-base);
+  --toastify-color-error: var(--v-error-base);
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-color-success: rgb(var(--v-theme-success)) !important;
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
+  --toastify-toast-width: 320px;
+  --toastify-toast-background: #fff;
+  --toastify-toast-min-height: 64px;
+  --toastify-toast-max-height: 800px;
+  --toastify-font-family: sans-serif;
+  --toastify-z-index: 9999;
+  --toastify-text-color-light:rgb(var(--v-theme-success)) !important;
+  --toastify-text-color-dark: rgb(var(--v-theme-success)) !important;
+  --toastify-color-progress-dark: rgb(var(--v-theme-success)) !important;
+  --toastify-color-progress-info: var(--toastify-color-info);
+  --toastify-color-progress-success: rgb(var(--v-theme-success)) !important;
+  --toastify-color-progress-warning: var(--toastify-color-warning);
+  --toastify-color-progress-error: var(--toastify-color-error);
 }
 
 .v-footer {
@@ -48,7 +71,8 @@ a:hover::after {
     max-width: 1200px !important;
   }
 }
-a.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-btn--size-large.v-btn--variant-elevated, button.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-btn--size-large.v-btn--variant-elevated {
+a.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-btn--size-large.v-btn--variant-elevated,
+button.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-btn--size-large.v-btn--variant-elevated {
   color: rgb(var(--v-theme-background)) !important;
 }
 

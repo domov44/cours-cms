@@ -9,11 +9,11 @@ export default defineNuxtPlugin((app) => {
       themes: {
         light: {
           colors: {
-            primary: '#4B5695',
-            secondary: '#E96B6A',
-            background: '#efeefa',
-            surface: '#efeefa',
-            red: "#FF5c4E",
+            primary: '#542DD6',
+            secondary: '#858CFF',
+            background: '#dddfff', 
+            surface: '#f2f3ff',
+            success: '#3a956d',
           },
         },
         dark: {
@@ -21,7 +21,7 @@ export default defineNuxtPlugin((app) => {
             primary: '#737EC9',
             secondary: '#3D387C',
             background: '#110f1d',
-            surface: '#1a1d2a',
+            surface: '#14161e',
             success: '#3a956d',
           },
         },

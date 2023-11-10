@@ -8,6 +8,7 @@ const icon = ref(getIcon())
 function toggleTheme() {
   const newTheme = theme.global.current.value.dark ? 'light' : 'dark'
   updateTheme(newTheme)
+  notify();
 }
 
 function updateTheme(newTheme) {
@@ -26,6 +27,10 @@ onMounted(() => {
     updateTheme(savedTheme)
   }
 })
+
+const notify = () => {
+  useNuxtApp().$toast.success('Nouveau thème appliqué');
+};
 </script>
 
 <template>

@@ -20,22 +20,8 @@
         </div>
       </v-card>
     </v-dialog>
-    <v-alert v-model="alert" type="success" border="start" closable class="alert">
-      URL copiée avec succès !
-    </v-alert>
   </div>
 </template>
-
-<style>
-.alert {
-  z-index: 999999;
-  position: fixed !important;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 400px;
-}
-</style>
 
 <script>
 export default {
@@ -61,16 +47,19 @@ export default {
       const urlField = document.querySelector('.v-text-field input');
       urlField.select();
       document.execCommand('copy');
-      this.alert = true; // Affiche l'alerte de succès
+
+      // afficher l'alert de confirmation
+      notify();
 
       // Fermer la popup après avoir copié le texte
       this.closePopup();
-
-      // Fermer l'alerte après 5 secondes
-      setTimeout(() => {
-        this.alert = false;
-      }, 3000);
     },
   },
 };
+
+
+const notify = () => {
+  useNuxtApp().$toast.success('URL copiée');
+};
+
 </script>
