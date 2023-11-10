@@ -1,20 +1,12 @@
 export default gql`
-query Footer{
-    footer {
-    logo {
-      fichierLogo {
-        alt
-        url
-      }
+query Footer {
+  footer {
+    signature {
+      richtext(markdown: true)
     }
     social {
-      url
       title
-    }
-    signature
-    navigation {
       url
-      title
     }
   }
 }
