@@ -1,21 +1,35 @@
 <script setup>
+import { ref, onMounted } from 'vue'
 import { useTheme } from 'vuetify'
-const theme = useTheme()
-function toggleTheme () {
-  const newTheme = theme.global.current.value.dark ? 'light' : 'dark'
-  theme.global.name.value = newTheme
 
+const theme = useTheme()
+const icon = ref(getIcon())
+
+function toggleTheme() {
+  const newTheme = theme.global.current.value.dark ? 'light' : 'dark'
+  updateTheme(newTheme)
+}
+
+function updateTheme(newTheme) {
+  theme.global.name.value = newTheme
   localStorage.setItem('theme', newTheme)
+  icon.value = getIcon()
+}
+
+function getIcon() {
+  return theme.global.current.value.dark ? 'mdi-weather-sunny' : 'mdi-weather-night'
 }
 
 onMounted(() => {
   const savedTheme = localStorage.getItem('theme')
   if (savedTheme) {
-    theme.global.name.value = savedTheme
+    updateTheme(savedTheme)
   }
 })
 </script>
 
 <template>
-    <v-btn icon="mdi-weather-sunny" @click="toggleTheme"></v-btn>
+  <v-btn icon :class="{'dark-icon': theme.global.current.value.dark}" @click="toggleTheme">
+    <v-icon>{{ icon }}</v-icon>
+  </v-btn>
 </template>
