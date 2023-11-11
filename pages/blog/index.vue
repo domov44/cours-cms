@@ -19,6 +19,10 @@ console.log(data)
             <h1>
                 Les articles
             </h1>
+            <div class="v-grid">
+                <img src="https://www.datocms-assets.com/110963/1699538721-planet.webp">
+                <img src="https://www.datocms-assets.com/110963/1699538704-controller.webp">
+            </div>
             <div v-if="!pending" class="v-grid">
                 <v-card v-for="posts in data.allPosts" :key="posts.id" width="350" outlined>
                     <v-img height="200" alt={{posts.seo[0].seo.image.alt}} :src="posts.seo[0].seo.image.url" cover>
