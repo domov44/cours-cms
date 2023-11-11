@@ -24,31 +24,31 @@
         </v-container>
     </Hero>
     <Section>
-        <v-container class="d-flex justify-space-between align-center">
-            <div>
-                <h2>
-                    Les derniers articles
-                </h2>
-                <div v-if="!pending" class="v-grid">
-                    <v-card v-for="posts in data.allPosts" :key="posts.id" width="350" outlined>
-                        <v-img height="200" :alt="posts.seo[0].seo.image.alt" :src="posts.seo[0].seo.image.url" cover>
-                        </v-img>
-                        <v-card-title>{{ posts.titlePost }}</v-card-title>
-                        <v-chip class="ma-2" color="success">
-                            {{ posts.category }}
-                        </v-chip>
-                        <v-card-subtitle>Par {{ posts.author }} le {{ posts.postDate }}</v-card-subtitle>
-                        <v-card-actions>
-                            <v-btn :to="'/blog/' + posts.postSlug" color="primary" size="large">Lire l'article</v-btn>
-                            <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
-                        </v-card-actions>
-                    </v-card>
-                    <img class="planet-img" src="https://www.datocms-assets.com/110963/1699538721-planet.webp">
-                    <img class="controller-img" src="https://www.datocms-assets.com/110963/1699538704-controller.webp">
-                </div>
-            </div>
-        </v-container>
-    </Section>
+    <v-container class="d-flex justify-space-between align-center">
+      <div>
+        <h2>Les derniers articles</h2>
+        <div v-if="!pending" class="v-grid">
+          <v-card v-for="post in data.allPosts" :key="post.id" width="350" outlined>
+            <v-img height="200" :alt="post.seo[0].seo.image.alt" :src="post.seo[0].seo.image.url" cover></v-img>
+            <v-card-title>{{ post.titlePost }}</v-card-title>
+            <v-chip class="ma-2" color="success">{{ post.category }}</v-chip>
+            <v-card-subtitle>Par {{ post.author }} le {{ post.postDate }}</v-card-subtitle>
+            <v-card-actions>
+              <v-btn :to="'/blog/' + post.postSlug" color="primary" size="large">Lire l'article</v-btn>
+              <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
+            </v-card-actions>
+          </v-card>
+          <img class="planet-img" src="https://www.datocms-assets.com/110963/1699538721-planet.webp">
+          <img class="controller-img" src="https://www.datocms-assets.com/110963/1699538704-controller.webp">
+        </div>
+        <div v-else class="v-grid">
+         <v-skeleton-loader class="mx-auto border" width="350" type="image, article"></v-skeleton-loader>
+         <v-skeleton-loader class="mx-auto border" width="350" type="image, article"></v-skeleton-loader>
+         <v-skeleton-loader class="mx-auto border" width="350" type="image, article"></v-skeleton-loader>
+        </div>
+      </div>
+    </v-container>
+  </Section>
 </template>
 <script setup>
 // SSR
