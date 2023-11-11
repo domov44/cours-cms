@@ -14,7 +14,7 @@ console.log(data)
             <img style="width:100%;" src="https://www.datocms-assets.com/110963/1699538708-earth.webp">
         </div>
     </Hero>
-    <Hero v-if="!pending">
+    <Hero>
         <div>
             <h1>
                 Les articles
