@@ -50,20 +50,6 @@ import Posts from '@/cms/queries/posts'
 const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
 </script>
 <style>
-.v-grid {
-    display: grid;
-    margin-top: 10px;
-    font-size: 0;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    grid-gap: 20px 22px;
-    justify-content: center;
-    max-width: 1400px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .hero-img {
     z-index: 20;
     width: 100%;
