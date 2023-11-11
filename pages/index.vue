@@ -41,11 +41,6 @@
           <img class="planet-img" src="https://www.datocms-assets.com/110963/1699538721-planet.webp">
           <img class="controller-img" src="https://www.datocms-assets.com/110963/1699538704-controller.webp">
         </div>
-        <div v-else class="v-grid">
-         <v-skeleton-loader class="mx-auto border" width="350" type="image, article"></v-skeleton-loader>
-         <v-skeleton-loader class="mx-auto border" width="350" type="image, article"></v-skeleton-loader>
-         <v-skeleton-loader class="mx-auto border" width="350" type="image, article"></v-skeleton-loader>
-        </div>
       </div>
     </v-container>
   </Section>
