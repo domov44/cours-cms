@@ -1,7 +1,9 @@
 <template>
     <Hero>
         <div style="width:60%; position:relative">
-            <span>Depuis n'importe où</span>
+            <v-chip class="ma-2" color="primary">
+                Depuis n'importe où
+            </v-chip>
             <h1 class="text-h2 font-weight-bold mb-4">Restez connecté</h1>
             <p class="text-body-1 mb-4">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise
                 en
@@ -24,10 +26,12 @@
             </h2>
             <div v-if="!pending" class="v-grid">
                 <v-card v-for="posts in data.allPosts" :key="posts.id" width="350" outlined>
-                    <v-img height="200" alt={{posts.seo[0].seo.image.alt}}
-                        :src="posts.seo[0].seo.image.url" cover>
+                    <v-img height="200" alt={{posts.seo[0].seo.image.alt}} :src="posts.seo[0].seo.image.url" cover>
                     </v-img>
                     <v-card-title>{{ posts.titlePost }}</v-card-title>
+                    <v-chip class="ma-2" color="success">
+                        Future Category
+                    </v-chip>
                     <v-card-subtitle>Par {{ posts.author }} le {{ posts.postDate }}</v-card-subtitle>
                     <v-card-actions>
                         <v-btn :to="'/blog/' + posts.postSlug" color="primary" size="large">Lire l'article</v-btn>
@@ -44,7 +48,6 @@
 // SSR
 import Posts from '@/cms/queries/posts'
 const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
-console.log(data)
 </script>
 <style>
 .v-grid {

@@ -30,9 +30,6 @@ query Posts {
     titlePost
     postDate
     author
-    excerp {
-      richtext
-    }
   }
 }
 `;

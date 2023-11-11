@@ -1,7 +1,40 @@
 export default gql`
 query singlepost($slug: String) {
   post(filter: {postSlug: {eq: $slug}}) {
+    introduction {
+      richtext(markdown: true)
+    }
+    postDate
+    postSlug
+    seo {
+      seo {
+        image {
+          url
+          alt
+        }
+      }
+    }
+    author
     content {
+      ... on LeftRightRecord {
+        id
+        text {
+          richtext(markdown: true)
+        }
+        mediaOnTheRight
+        media {
+          ... on MediablockRecord {
+            id
+            image {
+              alt
+              url
+              video {
+                mp4Url
+              }
+            }
+          }
+        }
+      }
       ... on MediablockRecord {
         id
         image {
@@ -11,7 +44,7 @@ query singlepost($slug: String) {
       }
       ... on RichtextRecord {
         id
-        richtext
+        richtext(markdown: true)
       }
       ... on VideoblockRecord {
         id
@@ -20,24 +53,8 @@ query singlepost($slug: String) {
         }
       }
     }
-    seo {
-      seo {
-        description
-        image {
-          url
-          alt
-        }
-      }
-    }
-
-    introduction {
-      richtext(markdown: true)
-    }
-    postSlug
-    titlePost
     id
-    postDate
-    author
+    titlePost
   }
 }
 `
