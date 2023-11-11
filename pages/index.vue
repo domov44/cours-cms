@@ -24,8 +24,8 @@
             <h2>
                 Les derniers articles
             </h2>
-            <div v-if="!pending" class="v-grid">
-                <v-card v-for="posts in data.allPosts" :key="posts.id" width="350" outlined>
+            <div class="v-grid">
+                <v-card v-if="!pending" v-for="posts in data.allPosts" :key="posts.id" width="350" outlined>
                     <v-img height="200" alt={{posts.seo[0].seo.image.alt}} :src="posts.seo[0].seo.image.url" cover>
                     </v-img>
                     <v-card-title>{{ posts.titlePost }}</v-card-title>
