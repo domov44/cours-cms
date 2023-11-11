@@ -15,6 +15,7 @@ query singlepost($slug: String) {
       }
     }
     author
+    category
     content {
       ... on LeftRightRecord {
         id

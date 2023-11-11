@@ -2,7 +2,7 @@
     <PostHero v-if="data">
         <h1 class="text-h2">{{ data.post.titlePost }}</h1>
         <v-chip class="ma-2" color="success">
-            Future Category
+            {{ data.post.category }}
         </v-chip>
         <div class="introduction" v-html=data.post.introduction[0].richtext></div>
         <SharePost />

@@ -30,6 +30,7 @@ query Posts {
     titlePost
     postDate
     author
+    category
   }
 }
 `;

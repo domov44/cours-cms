@@ -35,7 +35,7 @@
                         </v-img>
                         <v-card-title>{{ posts.titlePost }}</v-card-title>
                         <v-chip class="ma-2" color="success">
-                            Future Category
+                            {{ posts.category }}
                         </v-chip>
                         <v-card-subtitle>Par {{ posts.author }} le {{ posts.postDate }}</v-card-subtitle>
                         <v-card-actions>
