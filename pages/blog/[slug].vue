@@ -15,7 +15,7 @@
         <v-container class="d-flex"
             :class="{ 'flex-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
             v-if="content.__typename === 'LeftRightRecord'">
-            <div v-html="content.text[0].richtext" style="width:60%;" v-if="content.text && content.text.length > 0"></div>
+            <div class="content" v-html="content.text[0].richtext" style="width:60%;" v-if="content.text && content.text.length > 0"></div>
             <div style="width:40%;" v-for="(mediaBlock, mediaIndex) in content.media" :key="mediaIndex">
                 <img v-if="mediaBlock.__typename === 'MediablockRecord'" class="section-img" :src="mediaBlock.image.url"
                     :alt="mediaBlock.image.alt" />
@@ -25,7 +25,7 @@
             <img :src="content.image.url" :alt="content.image.alt" />
         </v-container>
         <v-container v-if="content.__typename === 'RichtextRecord'">
-            <div v-html="content.richtext"></div>
+            <div class="content" v-html="content.richtext"></div>
         </v-container>
         <v-container v-if="content.__typename === 'VideoblockRecord'">
             <video :src="content.video.url" controls></video>
