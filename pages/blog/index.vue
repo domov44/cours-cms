@@ -1,8 +1,8 @@
 <script setup>
 // SSR
 import Posts from '@/cms/queries/posts'
+import { formatPostDate } from '@/functions/DatePost.js';
 const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
-console.log(data)
 </script>
 <template>
     <Hero>
@@ -25,7 +25,7 @@ console.log(data)
             <v-img height="200" :alt="post.seo[0].seo.image.alt" :src="post.seo[0].seo.image.url" cover></v-img>
             <v-card-title>{{ post.titlePost }}</v-card-title>
             <v-chip class="ma-2" color="success">{{ post.category }}</v-chip>
-            <v-card-subtitle>Par {{ post.author }} le {{ post.postDate }}</v-card-subtitle>
+            <v-card-subtitle>Par {{ post.author }} le {{ formatPostDate(post.postDate, 'DD MMMM') }}</v-card-subtitle>
             <v-card-actions>
               <v-btn :to="'/blog/' + post.postSlug" color="primary" size="large">Lire l'article</v-btn>
               <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
