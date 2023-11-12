@@ -83,6 +83,10 @@ a:hover::after {
   min-width: 100%;
 }
 
+.v-container {
+  gap:50px !important;
+}
+
 @media (min-width: 1920px) {
   .v-container {
     max-width: 1200px !important;

@@ -1,36 +1,22 @@
 export default gql`
 query Posts {
- _allPostsMeta {
-    count
-  }
   allPosts {
-    _firstPublishedAt
-    content {
-      ... on MediablockRecord {
-        id
-      }
-      ... on RichtextRecord {
-        id
-      }
-      ... on VideoblockRecord {
-        id
-      }
-    }
+    postDate
+    postSlug
+    titlePost
+    category
+    author
     seo {
       seo {
-        description
         image {
           url
           alt
         }
       }
     }
-    id
-    postSlug
-    titlePost
-    postDate
-    author
-    category
+  }
+  _allPostsMeta {
+    count
   }
 }
 `;

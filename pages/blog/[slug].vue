@@ -16,17 +16,15 @@
     <v-container class="d-flex"
       :class="{ 'flex-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
       v-if="content.__typename === 'LeftRightRecord'">
-      <div class="content" style="width:60%;" v-if="content.text && content.text.length > 0">
-        <div  v-for="(textItem, textIndex) in content.text" :key="textIndex">
+        <div class="content" style="width:60%;" v-if="content.text && content.text.length > 0" v-for="(textItem, textIndex) in content.text" :key="textIndex">
           <v-chip class="ma-2" color="success" v-if="textItem.__typename === 'ChipRecord'">
             {{ textItem.chipLabel }}
           </v-chip>
-            <div v-else-if="textItem.__typename === 'RichtextRecord'" v-html="textItem.richtext" style="width:60%;"></div>
-            <v-btn color="primary" size="large" v-else-if="textItem.__typename === 'ExternalLinkRecord'" :to="textItem.url">
-              {{ textItem.title }}
-            </v-btn>
+          <div v-else-if="textItem.__typename === 'RichtextRecord'" v-html="textItem.richtext"></div>
+          <v-btn color="primary" size="large" v-else-if="textItem.__typename === 'ExternalLinkRecord'" :to="textItem.url">
+            {{ textItem.title }}
+          </v-btn>
         </div>
-      </div>
       <div style="width:40%;" v-for="(mediaBlock, mediaIndex) in content.media" :key="mediaIndex">
         <img v-if="mediaBlock.__typename === 'MediablockRecord'" class="section-img" :src="mediaBlock.image.url"
           :alt="mediaBlock.image.alt" />
@@ -36,8 +34,17 @@
     <v-container v-if="content.__typename === 'MediablockRecord'">
       <img :src="content.image.url" :alt="content.image.alt" />
     </v-container>
-    <v-container v-if="content.__typename === 'RichtextRecord'">
-      <div class="content" v-html="content.richtext"></div>
+    <v-container v-else-if="content.__typename === 'VerticalContentRecord'">
+      <div class="content" v-if="content.text && content.text.length > 0">
+        <div v-for="(textItem, textIndex) in content.text" :key="textIndex">
+          <div v-if="textItem.__typename === 'ChipRecord'">
+            {{ textItem.chipLabel }}
+          </div>
+          <div v-else-if="textItem.__typename === 'RichtextRecord'" v-html="textItem.richtext"></div>
+          <v-btn v-else-if="textItem.__typename === 'ExternalLinkRecord'" color="primary" size="large"
+            :href="textItem.url">{{ textItem.title }}</v-btn>
+        </div>
+      </div>
     </v-container>
     <v-container v-if="content.__typename === 'VideoblockRecord'">
       <video :src="content.video.url" controls></video>
