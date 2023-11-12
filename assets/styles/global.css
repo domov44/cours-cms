@@ -131,6 +131,9 @@ button.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-b
   margin: 0 auto 1.875rem auto;
   opacity: 0.7;
 }
+.content img {
+  max-width: 100%;
+}
 
 .v-grid {
   display: grid;
