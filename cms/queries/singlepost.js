@@ -15,27 +15,7 @@ query singlepost($slug: String) {
       }
     }
     author
-    category
     content {
-      ... on LeftRightRecord {
-        id
-        text {
-          richtext(markdown: true)
-        }
-        mediaOnTheRight
-        media {
-          ... on MediablockRecord {
-            id
-            image {
-              alt
-              url
-              video {
-                mp4Url
-              }
-            }
-          }
-        }
-      }
       ... on MediablockRecord {
         id
         image {
@@ -53,9 +33,44 @@ query singlepost($slug: String) {
           url
         }
       }
+      ... on LeftRightRecord {
+        id
+        text {
+          ... on ChipRecord {
+            id
+            chipLabel
+          }
+          ... on ExternalLinkRecord {
+            id
+            title
+            url
+          }
+          ... on RichtextRecord {
+            id
+            richtext(markdown: true)
+          }
+        }
+        mediaOnTheRight
+        media {
+          ... on MediablockRecord {
+            id
+            image {
+              url
+              alt
+            }
+          }
+          ... on VideoblockRecord {
+            id
+            video {
+              url
+            }
+          }
+        }
+      }
     }
     id
     titlePost
+    category
   }
 }
 `
