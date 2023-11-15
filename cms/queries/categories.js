@@ -1,21 +1,17 @@
 export default gql`
 query categories($slug: String) {
     category(filter: {categorySlug: {eq: $slug}}) {
-    categoryLabel
+      categoryLabel
     categorySlug
-  }
-  allPosts {
-    postDate
-    postSlug
-    titlePost
-    seo {
-      seo {
-        image {
-          alt
-          url
-        }
+    categoryDescription {
+      richtext(markdown: true)
+    }
+    seoCategory {
+      image {
+        alt
+        url
       }
     }
   }
 }
-`
+`;
