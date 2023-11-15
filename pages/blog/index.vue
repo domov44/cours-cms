@@ -25,7 +25,7 @@ const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
             <v-img height="200" :alt="post.seo[0].seo.image.alt" :src="post.seo[0].seo.image.url" cover></v-img>
             <v-card-title>{{ post.titlePost }}</v-card-title>
             <v-card-actions>
-              <v-btn color="success" variant="tonal">
+              <v-btn color="success" variant="tonal" :to="post.postCategory.categorySlug">
                 {{ post.postCategory.categoryLabel }}
               </v-btn>
             </v-card-actions>
