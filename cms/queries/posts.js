@@ -4,7 +4,6 @@ query Posts {
     postDate
     postSlug
     titlePost
-    category
     author
     seo {
       seo {
@@ -13,6 +12,11 @@ query Posts {
           alt
         }
       }
+    }
+    category
+    postCategory {
+      categoryLabel
+      categorySlug
     }
   }
   _allPostsMeta {
