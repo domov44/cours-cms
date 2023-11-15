@@ -8,5 +8,4 @@
 // SSR
 import Header from '@/cms/queries/header'
 const { data, pending, error, refresh } = useAsyncQuery(Header)
-console.log(data)
 </script>
