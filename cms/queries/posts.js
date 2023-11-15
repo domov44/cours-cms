@@ -1,5 +1,19 @@
 export default gql`
 query Posts {
+  allCategories {
+    categoryLabel
+    categorySlug
+    id
+    categoryDescription {
+      richtext(markdown: true)
+    }
+    seoCategory {
+      image {
+        url
+        alt
+      }
+    }
+  }
   allPosts {
     postDate
     postSlug
@@ -8,19 +22,15 @@ query Posts {
     seo {
       seo {
         image {
-          url
           alt
+          url
         }
       }
     }
-    category
     postCategory {
       categoryLabel
       categorySlug
     }
-  }
-  _allPostsMeta {
-    count
   }
 }
 `;

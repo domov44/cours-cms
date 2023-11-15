@@ -183,6 +183,10 @@ button.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-b
   position: absolute;
 }
 
+.category-card {
+  border-bottom: solid 3px var(--primary) !important;
+}
+
 @media only screen and (max-width: 1280px) {
   .v-grid {
     grid-template-columns: 1fr 1fr;

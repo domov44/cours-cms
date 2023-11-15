@@ -26,6 +26,17 @@
   <Section>
     <v-container class="d-flex justify-space-between align-center">
       <div>
+        <h2>De nombreuses catégories d'articles</h2>
+        <div v-if="!pending" class="v-grid">
+          <v-card v-for="category in data.allCategories" :key="category.id"  class="category-card mx-auto" width="350"  :title=category.categoryLabel :to=category.categorySlug subtitle="Catégorie" :prepend-avatar=category.seoCategory.image.url>
+          </v-card>
+        </div>
+      </div>
+    </v-container>
+  </Section>
+  <Section>
+    <v-container class="d-flex justify-space-between align-center">
+      <div>
         <h2>Les derniers articles</h2>
         <div v-if="!pending" class="v-grid">
           <v-card v-for="post in data.allPosts" :key="post.id" width="350" outlined>
@@ -54,4 +65,5 @@
 import Posts from '@/cms/queries/posts'
 import { formatPostDate } from '@/functions/DatePost.js';
 const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
+console.log(data)
 </script>

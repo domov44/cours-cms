@@ -15,6 +15,11 @@
     <v-container class="d-flex justify-space-between align-center">
       <div>
         <h2>Les articles</h2>
+        <div>
+          <v-btn rounded="xl" variant="tonal" color="primary" to="/blog">Tous</v-btn>
+          <v-btn rounded="xl" variant="tonal" color="primary" to="/analyse">Analyse</v-btn>
+          <v-btn rounded="xl" variant="tonal" color="primary" to="/developpement">Développement</v-btn>
+        </div>
         <div v-if="!pending" class="v-grid">
           <v-card v-for="post in filteredPosts" :key="post.id" width="350" outlined>
             <v-img height="200" :alt="post.seo[0].seo.image.alt" :src="post.seo[0].seo.image.url" cover></v-img>
