@@ -1,12 +1,9 @@
 <template>
     <v-navigation-drawer v-model="drawer" temporary>
         <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg" title="Nexinu"></v-list-item>
-
         <v-divider></v-divider>
-
         <v-list density="compact" nav>
-            <v-list-item to="/" prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>
-            <v-list-item to="/blog/" prepend-icon="mdi-forum" title="Blog" value="about"></v-list-item>
+
         </v-list>
     </v-navigation-drawer>
     <v-app-bar app color="background">
