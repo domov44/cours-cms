@@ -8,16 +8,19 @@
         <v-card-title>
           Partager l'article
           <v-spacer></v-spacer>
-          <v-btn icon @click="closePopup" class="close-button">
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
         </v-card-title>
-        <div>
+        <v-card-actions>
           <v-text-field :model-value="currentURL" label="URL" variant="outlined" readonly></v-text-field>
+        </v-card-actions>
+        <v-card-actions>
+          <v-spacer></v-spacer>
           <v-btn color="primary" size="large" @click="copyURL">
             Copier
           </v-btn>
-        </div>
+          <v-btn @click="closePopup" class="close-button">
+            Annuler
+          </v-btn>
+        </v-card-actions>
       </v-card>
     </v-dialog>
   </div>
