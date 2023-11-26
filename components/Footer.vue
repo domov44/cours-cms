@@ -1,6 +1,6 @@
 <template>
     <v-footer>
-        <v-container class="d-flex justify-space-between align-center">
+        <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
             <Signature />
             <SocialLinks />
         </v-container>

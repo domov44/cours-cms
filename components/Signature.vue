@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!pending" style="width:60%;">
+    <div v-if="!pending" class="box" style="width:60%;">
         <div class="text" v-html=data.footer.signature[0].richtext></div>
     </div>
 </template>
