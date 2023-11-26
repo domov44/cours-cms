@@ -14,10 +14,10 @@
         </v-card-actions>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" size="large" @click="copyURL">
+          <v-btn color="primary" variant="tonal" size="large" @click="copyURL">
             Copier
           </v-btn>
-          <v-btn @click="closePopup" class="close-button">
+          <v-btn @click="closePopup" class="close-button" size="large">
             Annuler
           </v-btn>
         </v-card-actions>
