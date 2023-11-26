@@ -1,10 +1,8 @@
 <template>
-    <v-navigation-drawer v-model="drawer" temporary>
-        <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg" title="Nexinu"></v-list-item>
-        <v-divider></v-divider>
+    <v-navigation-drawer class="hidden-md-and-up" v-model="drawer" location="right" temporary>
+
         <v-list density="compact" nav>
-            <v-list-item to="/" prepend-icon="mdi-view-dashboard" title="Home"></v-list-item>
-            <v-list-item to="/blog" prepend-icon="mdi-forum" title="Blog"></v-list-item>
+            <ResponsiveMainMenu />
         </v-list>
     </v-navigation-drawer>
     <v-app-bar app color="background">
@@ -14,9 +12,8 @@
             </div>
             <div style="width:100%;" class="d-flex align-center justify-end">
                 <MainMenu />
-                <v-btn class="hidden-md-and-up" color="primary" @click.stop="drawer = !drawer">
-                    Menu
-                </v-btn>
+                <v-app-bar-nav-icon variant="text" class="hidden-md-and-up" color="primary" @click.stop="drawer = !drawer">
+                </v-app-bar-nav-icon>
                 <SwitchTheme />
             </div>
         </v-container>
