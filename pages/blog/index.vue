@@ -6,7 +6,7 @@ const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
 </script>
 <template>
   <Hero>
-    <v-container class="d-flex justify-space-between align-center">
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
       <div style="width:80%;">
         <h1 class="text-h2 font-weight-bold mb-4">Le blog connecté</h1>
         <p class="text-body-1 mb-4">Quoi de neuf dans les technos web ?</p>
@@ -17,7 +17,7 @@ const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
     </v-container>
   </Hero>
   <Section>
-    <v-container class="d-flex justify-space-between align-center">
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
       <div>
         <h2>Les articles</h2>
         <div>

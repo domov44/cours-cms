@@ -1,6 +1,5 @@
 <template>
     <v-navigation-drawer class="hidden-md-and-up" v-model="drawer" location="right" temporary>
-
         <v-list density="compact" nav>
             <ResponsiveMainMenu />
         </v-list>

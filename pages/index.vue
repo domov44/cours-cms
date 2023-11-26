@@ -1,7 +1,7 @@
 <template>
   <Hero>
-    <v-container class="d-flex justify-space-between align-center">
-      <div style="width:60%; position:relative">
+     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
+      <div class="box" style="width:60%; position:relative">
         <v-chip class="ma-2" color="primary">
           Depuis n'importe où
         </v-chip>
@@ -18,13 +18,13 @@
         </v-btn>
         <img class="saturn-img" src="https://www.datocms-assets.com/110963/1699538726-saturn.webp">
       </div>
-      <div style="width:40%;">
+      <div class="box" style="width:40%;">
         <img class="section-img" src="https://www.datocms-assets.com/110963/1699538711-landing-3d.webp">
       </div>
     </v-container>
   </Hero>
   <Section>
-    <v-container class="d-flex justify-space-between align-center">
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
       <div>
         <h2>De nombreuses catégories d'articles</h2>
         <div v-if="!pending" class="v-grid">
