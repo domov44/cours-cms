@@ -14,7 +14,7 @@
 
   <Section v-if="data && data.post && data.post.content" v-for="(content, index) in data.post.content" :key="index">
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
-      :class="{ 'flex-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
+      :class="{ 'd-flex flex-column justify-space-between align-center flex-md-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
       v-if="content.__typename === 'LeftRightRecord'">
         <div class="content box" style="width:60%;" v-if="content.text && content.text.length > 0" v-for="(textItem, textIndex) in content.text" :key="textIndex">
           <v-chip class="ma-2" color="success" v-if="textItem.__typename === 'ChipRecord'">
@@ -37,9 +37,9 @@
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row" v-else-if="content.__typename === 'VerticalContentRecord'">
       <div class="content" v-if="content.text && content.text.length > 0">
         <div v-for="(textItem, textIndex) in content.text" :key="textIndex">
-          <div v-if="textItem.__typename === 'ChipRecord'">
+          <v-chip class="ma-2" color="success" v-if="textItem.__typename === 'ChipRecord'">
             {{ textItem.chipLabel }}
-          </div>
+          </v-chip>
           <div v-else-if="textItem.__typename === 'RichtextRecord'" v-html="textItem.richtext"></div>
           <v-btn v-else-if="textItem.__typename === 'ExternalLinkRecord'" color="primary" size="large"
             :href="textItem.url">{{ textItem.title }}</v-btn>
