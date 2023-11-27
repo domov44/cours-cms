@@ -1,34 +1,53 @@
 <template>
-  <Hero>
-     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
-      <div class="box" style="width:60%; position:relative">
-        <v-chip class="ma-2" color="primary">
-          Depuis n'importe où
-        </v-chip>
-        <h1 class="text-h2 font-weight-bold mb-4">Restez connecté</h1>
-        <p class="text-body-1 mb-4">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la
-          mise
-          en
-          page avant impression.
-          Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur
-          anonyme
-          assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte.</p>
-        <v-btn color="primary" size="large" to="/blog">
-          Découvrir le blog
-        </v-btn>
-        <img class="saturn-img" src="https://www.datocms-assets.com/110963/1699538726-saturn.webp">
+<Hero v-if="homeData && homeData.home && homeData.home.content" v-for="(content, index) in homeData.home.content" :key="index">
+  <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      :class="{ 'd-flex flex-column justify-space-between align-center flex-md-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
+      v-if="content.__typename === 'LeftRightRecord'">
+      <div class="page-content box" style="width:60%;">
+        <div v-if="content.text && content.text.length > 0" v-for="(textItem, textIndex) in content.text" :key="textIndex">
+          <v-chip class="ma-2" color="success" v-if="textItem.__typename === 'ChipRecord'">
+            {{ textItem.chipLabel }}
+          </v-chip>
+          <div v-else-if="textItem.__typename === 'RichtextRecord'" v-html="textItem.richtext"></div>
+          <v-btn color="primary" size="large" v-else-if="textItem.__typename === 'ExternalLinkRecord'" :to="textItem.url">
+            {{ textItem.title }}
+          </v-btn>
+        </div>
       </div>
-      <div class="box" style="width:40%;">
-        <img class="section-img" src="https://www.datocms-assets.com/110963/1699538711-landing-3d.webp">
+      <div class="box" style="width:40%;" v-for="(mediaBlock, mediaIndex) in content.media" :key="mediaIndex">
+        <img v-if="mediaBlock.__typename === 'MediablockRecord'" class="section-img" :src="mediaBlock.image.url"
+          :alt="mediaBlock.image.alt" />
+        <video v-if="mediaBlock.__typename === 'VideoblockRecord'" :src="mediaBlock.video.url" controls></video>
       </div>
     </v-container>
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row" v-if="content.__typename === 'MediablockRecord'">
+      <img :src="content.image.url" :alt="content.image.alt" />
+    </v-container>
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row" v-else-if="content.__typename === 'VerticalContentRecord'">
+      <div class="page-content" v-if="content.text && content.text.length > 0">
+        <div v-for="(textItem, textIndex) in content.text" :key="textIndex">
+          <v-chip class="ma-2" color="success" v-if="textItem.__typename === 'ChipRecord'">
+            {{ textItem.chipLabel }}
+          </v-chip>
+          <div v-else-if="textItem.__typename === 'RichtextRecord'" v-html="textItem.richtext"></div>
+          <v-btn v-else-if="textItem.__typename === 'ExternalLinkRecord'" color="primary" size="large"
+            :href="textItem.url">{{ textItem.title }}</v-btn>
+        </div>
+      </div>
+    </v-container>
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row" v-if="content.__typename === 'VideoblockRecord'">
+      <video :src="content.video.url" controls></video>
+    </v-container>
   </Hero>
+
   <Section>
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
       <div>
-        <h2>De nombreuses catégories d'articles</h2>
+        <h2>Choisissez une catégorie d'articles</h2>
         <div v-if="!pending" class="v-grid">
-          <v-card v-for="category in data.allCategories" :key="category.id"  class="category-card mx-auto" width="350"  :title=category.categoryLabel :to=category.categorySlug subtitle="Catégorie" :prepend-avatar=category.seoCategory.image.url>
+          <v-card v-for="category in data.allCategories" :key="category.id" class="category-card mx-auto" width="350"
+            :title=category.categoryLabel :to=category.categorySlug subtitle="Catégorie"
+            :prepend-avatar=category.seoCategory.image.url>
           </v-card>
         </div>
       </div>
@@ -37,7 +56,7 @@
   <Section>
     <v-container class="d-flex justify-space-between align-center">
       <div>
-        <h2>Les derniers articles</h2>
+        <h2>Ou parcourez nos derniers articles</h2>
         <div v-if="!pending" class="v-grid">
           <v-card v-for="post in data.allPosts" :key="post.id" width="350" outlined>
             <v-img height="200" :alt="post.seo[0].seo.image.alt" :src="post.seo[0].seo.image.url" cover></v-img>
@@ -63,7 +82,8 @@
 <script setup>
 // SSR
 import Posts from '@/cms/queries/posts'
+import Home from '@/cms/queries/home'
 import { formatPostDate } from '@/functions/DatePost.js';
 const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
-console.log(data)
+const { data: homeData, pending: homePending, error: homeError, refresh: homeRefresh } = await useLazyAsyncQuery(Home);
 </script>
