@@ -1,10 +1,12 @@
 <template>
-<Hero v-if="homeData && homeData.home && homeData.home.content" v-for="(content, index) in homeData.home.content" :key="index">
-  <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+  <Hero v-if="homeData && homeData.home && homeData.home.content" v-for="(content, index) in homeData.home.content"
+    :key="index">
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
       :class="{ 'd-flex flex-column justify-space-between align-center flex-md-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
       v-if="content.__typename === 'LeftRightRecord'">
       <div class="page-content box" style="width:60%;">
-        <div v-if="content.text && content.text.length > 0" v-for="(textItem, textIndex) in content.text" :key="textIndex">
+        <div v-if="content.text && content.text.length > 0" v-for="(textItem, textIndex) in content.text"
+          :key="textIndex">
           <v-chip class="ma-2" color="success" v-if="textItem.__typename === 'ChipRecord'">
             {{ textItem.chipLabel }}
           </v-chip>
@@ -20,10 +22,12 @@
         <video v-if="mediaBlock.__typename === 'VideoblockRecord'" :src="mediaBlock.video.url" controls></video>
       </div>
     </v-container>
-    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row" v-if="content.__typename === 'MediablockRecord'">
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      v-if="content.__typename === 'MediablockRecord'">
       <img :src="content.image.url" :alt="content.image.alt" />
     </v-container>
-    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row" v-else-if="content.__typename === 'VerticalContentRecord'">
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      v-else-if="content.__typename === 'VerticalContentRecord'">
       <div class="page-content" v-if="content.text && content.text.length > 0">
         <div v-for="(textItem, textIndex) in content.text" :key="textIndex">
           <v-chip class="ma-2" color="success" v-if="textItem.__typename === 'ChipRecord'">
@@ -35,24 +39,36 @@
         </div>
       </div>
     </v-container>
-    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row" v-if="content.__typename === 'VideoblockRecord'">
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      v-if="content.__typename === 'VideoblockRecord'">
       <video :src="content.video.url" controls></video>
     </v-container>
-  </Hero>
-
-  <Section>
-    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
-      <div>
-        <h2>Choisissez une catégorie d'articles</h2>
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      v-if="content.__typename === 'GridCardRecord'">
+      <div v-if="content.card[0].addAllCategories">
+        <div v-if="content.sectionTitle && content.sectionTitle[0] && content.sectionTitle[0].richtext">
+          <div v-html="content.sectionTitle[0].richtext"></div>
+        </div>
         <div v-if="!pending" class="v-grid">
           <v-card v-for="category in data.allCategories" :key="category.id" class="category-card mx-auto" width="350"
-            :title=category.categoryLabel :to=category.categorySlug subtitle="Catégorie"
-            :prepend-avatar=category.seoCategory.image.url>
+            :title="category.categoryLabel" :to="category.categorySlug" subtitle="Catégorie"
+            :prepend-avatar="category.seoCategory.image.url">
+          </v-card>
+        </div>
+      </div>
+      <div v-else>
+        <div v-if="content.sectionTitle && content.sectionTitle[0] && content.sectionTitle[0].richtext">
+          <div v-html="content.sectionTitle[0].richtext"></div>
+        </div>
+        <div v-if="!pending" class="v-grid">
+          <v-card v-for="card in content.card" :key="card.id" class="category-card mx-auto" width="350"
+            :title="card.cardTitle" :to=card.cardLink :subtitle=card.cardSubtitle
+            :prepend-avatar="card.cardPicture.url">
           </v-card>
         </div>
       </div>
     </v-container>
-  </Section>
+  </Hero>
   <Section>
     <v-container class="d-flex justify-space-between align-center">
       <div>
