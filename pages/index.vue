@@ -62,7 +62,7 @@
         </div>
         <div v-if="!pending" class="v-grid">
           <v-card v-for="card in content.card" :key="card.id" class="category-card mx-auto" width="350"
-            :title="card.cardTitle" :to=card.cardLink :subtitle=card.cardSubtitle
+            :title="card.cardTitle" :href=card.cardLink :subtitle=card.cardSubtitle
             :prepend-avatar="card.cardPicture.url">
           </v-card>
         </div>
