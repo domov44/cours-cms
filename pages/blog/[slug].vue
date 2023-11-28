@@ -49,6 +49,31 @@
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row" v-if="content.__typename === 'VideoblockRecord'">
       <video :src="content.video.url" controls></video>
     </v-container>
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      v-if="content.__typename === 'GridCardRecord'">
+      <div v-if="content.card[0].addAllCategories">
+        <div v-if="content.sectionTitle && content.sectionTitle[0] && content.sectionTitle[0].richtext">
+          <div v-html="content.sectionTitle[0].richtext"></div>
+        </div>
+        <div v-if="!pending" class="v-grid">
+          <v-card v-for="category in data.allCategories" :key="category.id" class="category-card mx-auto" width="350"
+            :title="category.categoryLabel" :to="category.categorySlug" subtitle="Catégorie"
+            :prepend-avatar="category.seoCategory.image.url">
+          </v-card>
+        </div>
+      </div>
+      <div v-else>
+        <div v-if="content.sectionTitle && content.sectionTitle[0] && content.sectionTitle[0].richtext">
+          <div v-html="content.sectionTitle[0].richtext"></div>
+        </div>
+        <div v-if="!pending" class="v-grid">
+          <v-card v-for="card in content.card" :key="card.id" class="category-card mx-auto" width="350"
+            :title="card.cardTitle" :href=card.cardLink :subtitle=card.cardSubtitle
+            :prepend-avatar="card.cardPicture.url">
+          </v-card>
+        </div>
+      </div>
+    </v-container>
   </Section>
 </template>
   

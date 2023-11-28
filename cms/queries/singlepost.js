@@ -1,5 +1,19 @@
 export default gql`
 query singlepost($slug: String) {
+  allCategories {
+    categoryLabel
+    categorySlug
+    id
+    categoryDescription {
+      richtext(markdown: true)
+    }
+    seoCategory {
+      image {
+        url
+        alt
+      }
+    }
+  }
   post(filter: {postSlug: {eq: $slug}}) {
     introduction {
       richtext(markdown: true)
@@ -79,6 +93,24 @@ query singlepost($slug: String) {
             id
             richtext(markdown: true)
           }
+        }
+      }
+      ... on GridCardRecord {
+        id
+        card {
+          addAllCategories
+          cardPicture {
+            alt
+            url
+          }
+          cardSubtitle
+          cardTitle
+          cardLink
+          id
+        }
+        sectionTitle {
+          id
+        richtext(markdown: true)
         }
       }
     }
