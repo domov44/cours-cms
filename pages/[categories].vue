@@ -1,6 +1,6 @@
 <template v-if="route && !pending">
-  <SeoMeta v-if="!pending" :meta_seo="data.category"/>
   <Hero v-if="data">
+    <SeoMeta v-if="!pending" :meta_seo="data.category"/>
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
       <div class="box" style="width:80%;">
         <h1 class="text-h2">Les articles de la catégorie {{ data.category.categoryLabel }}</h1>
