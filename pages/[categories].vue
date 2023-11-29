@@ -1,4 +1,5 @@
 <template v-if="route && !pending">
+  <SeoMeta v-if="!pending" :meta_seo="data.category"/>
   <Hero v-if="data">
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
       <div class="box" style="width:80%;">
@@ -6,7 +7,7 @@
         <div v-html=data.category.categoryDescription[0].richtext class="text-body-1 mb-4"></div>
       </div>
       <div class="box" style="width:20%;">
-        <v-img alt={{data.category.seoCategory.image.alt}} :src="data.category.seoCategory.image.url" cover>
+        <v-img alt={{data.category.seo[0].seo.image.alt}} :src="data.category.seo[0].seo.image.url" cover>
         </v-img>
       </div>
     </v-container>

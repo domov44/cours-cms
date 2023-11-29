@@ -1,6 +1,7 @@
 <template>
   <Hero v-if="blogData && blogData.blog && blogData.blog.content" v-for="(content, index) in blogData.blog.content"
     :key="index">
+    <SeoMeta v-if="!pending" :meta_seo="blogData.blog"/>
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
       :class="{ 'd-flex flex-column justify-space-between align-center flex-md-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
       v-if="content.__typename === 'LeftRightRecord'">
@@ -52,7 +53,7 @@
         <div v-if="!pending" class="v-grid">
           <v-card v-for="category in data.allCategories" :key="category.id" class="category-card mx-auto" width="350"
             :title="category.categoryLabel" :to="category.categorySlug" subtitle="Catégorie"
-            :prepend-avatar="category.seoCategory.image.url">
+            :prepend-avatar="category.seo[0].seo.image.url">
           </v-card>
         </div>
       </div>

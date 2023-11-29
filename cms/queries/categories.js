@@ -6,10 +6,14 @@ query categories($slug: String) {
     categoryDescription {
       richtext(markdown: true)
     }
-    seoCategory {
-      image {
-        alt
-        url
+    seo {
+      seo {
+        description
+        title
+        image {
+          url
+          alt
+        }
       }
     }
   }
@@ -20,10 +24,14 @@ query categories($slug: String) {
     categoryDescription {
       richtext(markdown: true)
     }
-    seoCategory {
-      image {
-        url
-        alt
+    seo {
+      seo {
+        description
+        title
+        image {
+          url
+          alt
+        }
       }
     }
   }
@@ -34,6 +42,8 @@ query categories($slug: String) {
     author
     seo {
       seo {
+        description
+        title
         image {
           alt
           url

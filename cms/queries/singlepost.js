@@ -7,10 +7,14 @@ query singlepost($slug: String) {
     categoryDescription {
       richtext(markdown: true)
     }
-    seoCategory {
-      image {
-        url
-        alt
+    seo {
+      seo {
+        description
+        title
+        image {
+          alt
+          url
+        }
       }
     }
   }
@@ -26,6 +30,8 @@ query singlepost($slug: String) {
           url
           alt
         }
+        description
+        title
       }
     }
     author

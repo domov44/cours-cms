@@ -1,5 +1,6 @@
 <!-- SinglePost.vue -->
 <template v-if="route && !pending">
+  <SeoMeta v-if="!pending" :meta_seo="data.post"/>
   <PostHero v-if="data">
     <h1 class="text-h2">{{ data.post.titlePost }}</h1>
     <v-btn color="success" variant="tonal" :to="'/' + data.post.postCategory.categorySlug">
@@ -11,7 +12,6 @@
     <v-img alt={{data.post.seo[0].seo.image.alt}} :src="data.post.seo[0].seo.image.url" cover>
     </v-img>
   </PostHero>
-
   <Section v-if="data && data.post && data.post.content" v-for="(content, index) in data.post.content" :key="index">
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
       :class="{ 'd-flex flex-column justify-space-between align-center flex-md-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
@@ -62,7 +62,7 @@
         <div v-if="!pending" class="v-grid">
           <v-card v-for="category in data.allCategories" :key="category.id" class="category-card mx-auto" width="350"
             :title="category.categoryLabel" :to="category.categorySlug" subtitle="Catégorie"
-            :prepend-avatar="category.seoCategory.image.url">
+            :prepend-avatar="category.seo[0].seo.image.url">
           </v-card>
         </div>
       </div>

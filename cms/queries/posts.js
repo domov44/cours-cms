@@ -7,10 +7,14 @@ query Posts {
     categoryDescription {
       richtext(markdown: true)
     }
-    seoCategory {
-      image {
-        url
-        alt
+    seo {
+      seo {
+        image {
+          url
+          alt
+        }
+        description
+        title
       }
     }
   }
@@ -21,6 +25,8 @@ query Posts {
     author
     seo {
       seo {
+        description
+        title
         image {
           alt
           url
