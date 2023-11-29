@@ -13,6 +13,20 @@ query categories($slug: String) {
       }
     }
   }
+  allCategories {
+    categoryLabel
+    categorySlug
+    id
+    categoryDescription {
+      richtext(markdown: true)
+    }
+    seoCategory {
+      image {
+        url
+        alt
+      }
+    }
+  }
   allPosts {
     postDate
     postSlug

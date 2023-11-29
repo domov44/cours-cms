@@ -224,6 +224,13 @@ button.v-btn.v-btn--elevated.v-theme--dark.bg-primary.v-btn--density-default.v-b
   border-bottom: solid 3px var(--primary) !important;
 }
 
+.filter-container{
+  display: flex;
+  gap : 10px;
+  overflow-x: auto;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
 
 @media only screen and (max-width: 1280px) {
   .v-grid {

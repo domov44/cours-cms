@@ -74,7 +74,7 @@
         <div v-if="content.gridTitle && content.gridTitle[0] && content.gridTitle[0].richtext">
           <div v-html="content.gridTitle[0].richtext"></div>
         </div>
-        <div v-if="content.addAllCategoriesFilter">
+        <div v-if="content.addAllCategoriesFilter" class="filter-container">
           <v-btn rounded="xl" variant="tonal" color="primary" to="/blog">Tous</v-btn>
           <v-btn rounded="xl" variant="tonal" color="primary" v-for="category in data.allCategories" :key="category.id"
             :to="category.categorySlug"> {{ category.categoryLabel }}

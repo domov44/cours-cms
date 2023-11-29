@@ -12,15 +12,16 @@
     </v-container>
   </Hero>
   <Section>
-    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row" v-if="!pending">
       <div>
-        <h2>Les articles</h2>
-        <div>
+        <h2>Les articles de la catégorie</h2>
+        <div class="filter-container">
           <v-btn rounded="xl" variant="tonal" color="primary" to="/blog">Tous</v-btn>
-          <v-btn rounded="xl" variant="tonal" color="primary" to="/analyse">Analyse</v-btn>
-          <v-btn rounded="xl" variant="tonal" color="primary" to="/developpement">Développement</v-btn>
+          <v-btn rounded="xl" variant="tonal" color="primary" v-for="category in data.allCategories" :key="category.id"
+            :to="category.categorySlug"> {{ category.categoryLabel }}
+          </v-btn>
         </div>
-        <div v-if="!pending" class="v-grid">
+        <div  class="v-grid">
           <v-card v-for="post in filteredPosts" :key="post.id" width="350" outlined>
             <v-img height="200" :alt="post.seo[0].seo.image.alt" :src="post.seo[0].seo.image.url" cover></v-img>
             <v-card-title>{{ post.titlePost }}</v-card-title>
