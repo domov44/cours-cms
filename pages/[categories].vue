@@ -33,11 +33,8 @@
             <v-card-subtitle>Par {{ post.author }} le {{ formatPostDate(post.postDate, 'DD MMMM') }}</v-card-subtitle>
             <v-card-actions>
               <v-btn :to="'/blog/' + post.postSlug" color="primary" size="large">Lire l'article</v-btn>
-              <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
             </v-card-actions>
           </v-card>
-          <img class="planet-img" src="https://www.datocms-assets.com/110963/1699538721-planet.webp">
-          <img class="controller-img" src="https://www.datocms-assets.com/110963/1699538704-controller.webp">
         </div>
       </div>
     </v-container>

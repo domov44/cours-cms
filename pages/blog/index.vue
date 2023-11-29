@@ -93,7 +93,6 @@
             <v-card-subtitle>Par {{ post.author }} le {{ formatPostDate(post.postDate, 'DD MMMM') }}</v-card-subtitle>
             <v-card-actions>
               <v-btn :to="'/blog/' + post.postSlug" color="primary" size="large">Lire l'article</v-btn>
-              <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
             </v-card-actions>
           </v-card>
         </div>
