@@ -68,13 +68,21 @@
         </div>
       </div>
     </v-container>
-  </Hero>
-  <Section>
-    <v-container class="d-flex justify-space-between align-center">
-      <div>
-        <h2>Ou parcourez nos derniers articles</h2>
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      v-if="content.__typename === 'GridForVerticalCardRecord'">
+      <div v-if="content.addAllPosts">
+        <div v-if="content.gridTitle && content.gridTitle[0] && content.gridTitle[0].richtext">
+          <div v-html="content.gridTitle[0].richtext"></div>
+        </div>
+        <div v-if="content.addAllCategoriesFilter">
+          <v-btn rounded="xl" variant="tonal" color="primary" to="/blog">Tous</v-btn>
+          <v-btn rounded="xl" variant="tonal" color="primary" v-for="category in data.allCategories" :key="category.id"
+            :to="category.categorySlug"> {{ category.categoryLabel }}
+          </v-btn>
+        </div>
         <div v-if="!pending" class="v-grid">
-          <v-card v-for="post in data.allPosts" :key="post.id" width="350" outlined>
+          <v-card v-for="post in content.cardsNumber ? data.allPosts.slice(0, content.cardsNumber) : data.allPosts"
+            :key="post.id" width="350" outlined>
             <v-img height="200" :alt="post.seo[0].seo.image.alt" :src="post.seo[0].seo.image.url" cover></v-img>
             <v-card-title>{{ post.titlePost }}</v-card-title>
             <v-card-actions>
@@ -88,12 +96,35 @@
               <v-btn size="small" color="surface-variant" variant="text" icon="mdi-share-variant"></v-btn>
             </v-card-actions>
           </v-card>
-          <img class="planet-img" src="https://www.datocms-assets.com/110963/1699538721-planet.webp">
-          <img class="controller-img" src="https://www.datocms-assets.com/110963/1699538704-controller.webp">
+        </div>
+      </div>
+      <div v-else>
+        <div v-if="content.gridTitle && content.gridTitle[0] && content.gridTitle[0].richtext">
+          <div v-html="content.gridTitle[0].richtext"></div>
+        </div>
+        <div v-if="!pending" class="v-grid">
+          <v-card v-for="vertical_card in content.verticalCard" :key="vertical_card.id" width="350" outlined>
+            <v-img v-if="vertical_card.cardImage" height="200" :alt="vertical_card.cardImage.alt"
+              :src="vertical_card.cardImage.url" cover></v-img>
+            <v-card-title v-if="vertical_card.cardTitle && vertical_card.cardTitle.length > 0">{{ vertical_card.cardTitle
+            }}</v-card-title>
+            <v-card-actions v-if="vertical_card.cardSecondaryLink && vertical_card.cardSecondaryLink.length > 0">
+              <v-btn color="success" variant="tonal" :href=vertical_card.cardSecondaryLink[0].url>
+                {{ vertical_card.cardSecondaryLink[0].title }}
+              </v-btn>
+            </v-card-actions>
+            <v-card-subtitle v-else-if="vertical_card.cardSubtitle && vertical_card.cardSubtitle.length > 0">{{
+              vertical_card.cardSubtitle }}</v-card-subtitle>
+            <v-card-actions v-else-if="vertical_card.cardButton && vertical_card.cardButton.length > 0">
+              <v-btn :href="vertical_card.cardButton[0].url" color="primary" size="large">
+                {{ vertical_card.cardButton[0].title }}
+              </v-btn>
+            </v-card-actions>
+          </v-card>
         </div>
       </div>
     </v-container>
-  </Section>
+  </Hero>
 </template>
 <script setup>
 // SSR

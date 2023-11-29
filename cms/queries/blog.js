@@ -91,6 +91,32 @@ query Blog {
         richtext(markdown: true)
         }
       }
+      ... on GridForVerticalCardRecord {
+        id
+        addAllCategoriesFilter
+        addAllPosts
+        cardsNumber
+        gridTitle {
+          richtext(markdown: true)
+        }
+        verticalCard {
+          cardSubtitle
+          cardTitle
+          id
+          cardButton {
+            title
+            url
+          }
+          cardImage {
+            url
+            alt
+          }
+          cardSecondaryLink {
+            url
+            title
+          }
+        }
+      }
     }
     id
     seo {
