@@ -116,7 +116,10 @@ query singlepost($slug: String) {
     }
     id
     titlePost
-    category
+    postCategory {
+      categoryLabel
+      categorySlug
+    }
   }
 }
 `

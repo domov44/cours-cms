@@ -132,4 +132,12 @@ import Home from '@/cms/queries/home'
 import { formatPostDate } from '@/functions/DatePost.js';
 const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
 const { data: homeData, pending: homePending, error: homeError, refresh: homeRefresh } = await useLazyAsyncQuery(Home);
+
+const { pageTitle } = defineProps(['pageTitle'])
+
+// Utilisez pageTitle pour définir le titre de la page
+useHead({
+    title: pageTitle,
+})
+
 </script>

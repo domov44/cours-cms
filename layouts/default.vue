@@ -7,3 +7,16 @@
         <Footer />
     </v-app>
 </template>
+
+<script setup>
+const route = useRoute()
+
+useHead({
+  title: `Le Blog Nexinu`,
+  meta: [
+    { name: 'description', content: `Blog Nexinu sur les nouvelles technologies` },
+    { property: 'og:title', content: `` },
+    { property: 'og:image', content: `` }
+],
+})
+</script>
