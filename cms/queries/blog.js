@@ -1,50 +1,10 @@
 export default gql`
-query singlepost($slug: String) {
-  allCategories {
-    categoryLabel
-    categorySlug
-    id
-    categoryDescription {
-      richtext(markdown: true)
-    }
-    seoCategory {
-      image {
-        url
-        alt
-      }
-    }
-  }
-  post(filter: {postSlug: {eq: $slug}}) {
-    introduction {
-      richtext(markdown: true)
-    }
-    postDate
-    postSlug
-    seo {
-      seo {
-        image {
-          url
-          alt
-        }
-      }
-    }
-    author
+query Blog {
+  blog {
     content {
-      ... on MediablockRecord {
-        id
-        image {
-          alt
-          url
-        }
-      }
-      ... on VideoblockRecord {
-        id
-        video {
-          url
-        }
-      }
       ... on LeftRightRecord {
         id
+        mediaOnTheRight
         text {
           ... on ChipRecord {
             id
@@ -60,20 +20,32 @@ query singlepost($slug: String) {
             richtext(markdown: true)
           }
         }
-        mediaOnTheRight
         media {
-          ... on MediablockRecord {
-            id
-            image {
-              url
-              alt
-            }
-          }
           ... on VideoblockRecord {
             id
             video {
               url
             }
+          }
+          ... on MediablockRecord {
+            id
+            image {
+              url
+              alt
+              video {
+                mp4Url
+              }
+            }
+          }
+        }
+      }
+      ... on MediablockRecord {
+        id
+        image {
+          url
+          alt
+          video {
+            mp4Url
           }
         }
       }
@@ -93,6 +65,12 @@ query singlepost($slug: String) {
             id
             richtext(markdown: true)
           }
+        }
+      }
+      ... on VideoblockRecord {
+        id
+        video {
+          url
         }
       }
       ... on GridCardRecord {
@@ -115,8 +93,16 @@ query singlepost($slug: String) {
       }
     }
     id
-    titlePost
-    category
+    seo {
+      seo {
+        description
+        title
+        image {
+          alt
+          url
+        }
+      }
+    }
   }
 }
 `

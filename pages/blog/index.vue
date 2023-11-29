@@ -1,18 +1,71 @@
-<script setup>
-// SSR
-import Posts from '@/cms/queries/posts'
-import { formatPostDate } from '@/functions/DatePost.js';
-const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
-</script>
 <template>
-  <Hero>
-    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
-      <div style="width:80%;">
-        <h1 class="text-h2 font-weight-bold mb-4">Le blog connecté</h1>
-        <p class="text-body-1 mb-4">Quoi de neuf dans les technos web ?</p>
+  <Hero v-if="blogData && blogData.blog && blogData.blog.content" v-for="(content, index) in blogData.blog.content"
+    :key="index">
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      :class="{ 'd-flex flex-column justify-space-between align-center flex-md-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
+      v-if="content.__typename === 'LeftRightRecord'">
+      <div class="page-content box" style="width:60%;">
+        <div v-if="content.text && content.text.length > 0" v-for="(textItem, textIndex) in content.text"
+          :key="textIndex">
+          <v-chip class="ma-2" color="success" v-if="textItem.__typename === 'ChipRecord'">
+            {{ textItem.chipLabel }}
+          </v-chip>
+          <div v-else-if="textItem.__typename === 'RichtextRecord'" v-html="textItem.richtext"></div>
+          <v-btn color="primary" size="large" v-else-if="textItem.__typename === 'ExternalLinkRecord'" :to="textItem.url">
+            {{ textItem.title }}
+          </v-btn>
+        </div>
       </div>
-      <div style="width:20%;">
-        <img style="width:100%;" src="https://www.datocms-assets.com/110963/1699538708-earth.webp">
+      <div class="box" style="width:40%;" v-for="(mediaBlock, mediaIndex) in content.media" :key="mediaIndex">
+        <img v-if="mediaBlock.__typename === 'MediablockRecord'" class="section-img" :src="mediaBlock.image.url"
+          :alt="mediaBlock.image.alt" />
+        <video v-if="mediaBlock.__typename === 'VideoblockRecord'" :src="mediaBlock.video.url" controls></video>
+      </div>
+    </v-container>
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      v-if="content.__typename === 'MediablockRecord'">
+      <img :src="content.image.url" :alt="content.image.alt" />
+    </v-container>
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      v-else-if="content.__typename === 'VerticalContentRecord'">
+      <div class="page-content" v-if="content.text && content.text.length > 0">
+        <div v-for="(textItem, textIndex) in content.text" :key="textIndex">
+          <v-chip class="ma-2" color="success" v-if="textItem.__typename === 'ChipRecord'">
+            {{ textItem.chipLabel }}
+          </v-chip>
+          <div v-else-if="textItem.__typename === 'RichtextRecord'" v-html="textItem.richtext"></div>
+          <v-btn v-else-if="textItem.__typename === 'ExternalLinkRecord'" color="primary" size="large"
+            :href="textItem.url">{{ textItem.title }}</v-btn>
+        </div>
+      </div>
+    </v-container>
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      v-if="content.__typename === 'VideoblockRecord'">
+      <video :src="content.video.url" controls></video>
+    </v-container>
+    <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
+      v-if="content.__typename === 'GridCardRecord'">
+      <div v-if="content.addAllCategories">
+        <div v-if="content.sectionTitle && content.sectionTitle[0] && content.sectionTitle[0].richtext">
+          <div v-html="content.sectionTitle[0].richtext"></div>
+        </div>
+        <div v-if="!pending" class="v-grid">
+          <v-card v-for="category in data.allCategories" :key="category.id" class="category-card mx-auto" width="350"
+            :title="category.categoryLabel" :to="category.categorySlug" subtitle="Catégorie"
+            :prepend-avatar="category.seoCategory.image.url">
+          </v-card>
+        </div>
+      </div>
+      <div v-else>
+        <div v-if="content.sectionTitle && content.sectionTitle[0] && content.sectionTitle[0].richtext">
+          <div v-html="content.sectionTitle[0].richtext"></div>
+        </div>
+        <div v-if="!pending" class="v-grid">
+          <v-card v-for="card in content.card" :key="card.id" class="category-card mx-auto" width="350"
+            :title="card.cardTitle" :href=card.cardLink :subtitle=card.cardSubtitle
+            :prepend-avatar="card.cardPicture.url">
+          </v-card>
+        </div>
       </div>
     </v-container>
   </Hero>
@@ -47,5 +100,11 @@ const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
     </v-container>
   </Section>
 </template>
-
-
+<script setup>
+// SSR
+import Posts from '@/cms/queries/posts'
+import Blog from '@/cms/queries/blog'
+import { formatPostDate } from '@/functions/DatePost.js';
+const { data: blogData, pending: blogPending, error: blogError, refresh: blogRefresh } = await useLazyAsyncQuery(Blog);
+const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
+</script>

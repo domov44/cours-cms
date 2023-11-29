@@ -51,7 +51,7 @@
     </v-container>
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
       v-if="content.__typename === 'GridCardRecord'">
-      <div v-if="content.card[0].addAllCategories">
+      <div v-if="content.addAllCategories">
         <div v-if="content.sectionTitle && content.sectionTitle[0] && content.sectionTitle[0].richtext">
           <div v-html="content.sectionTitle[0].richtext"></div>
         </div>

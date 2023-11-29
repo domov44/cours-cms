@@ -75,8 +75,8 @@ query Home {
       }
       ... on GridCardRecord {
         id
+        addAllCategories
         card {
-          addAllCategories
           cardPicture {
             alt
             url
