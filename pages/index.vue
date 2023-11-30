@@ -1,6 +1,6 @@
 <template>
   <Head v-if="!homePending">
-    <Title> {{ `Nexinu - ${homeData.home.seo[0].seo.title}` }}</Title>
+    <Title> {{ homeData.home.seo[0].seo.title }}</Title>
     <Meta name="description" :content="homeData.home.seo[0].seo.description" />
     <Meta name="ogTitle" :content="homeData.home.seo[0].seo.title" />
     <Meta name="ogDescription" :content="homeData.home.seo[0].seo.description" />
