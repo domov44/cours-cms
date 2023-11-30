@@ -1,6 +1,12 @@
 <!-- SinglePost.vue -->
 <template v-if="route && !pending">
-  <SeoMeta v-if="!pending" :meta_seo="data.post"/>
+  <Head v-if="!pending">
+    <Title> {{ `Nexinu - ${data.post.seo[0].seo.title}` }}</Title>
+    <Meta name="description" :content="data.post.seo[0].seo.description" />
+    <Meta name="ogTitle" :content="data.post.seo[0].seo.title" />
+    <Meta name="ogDescription" :content="data.post.seo[0].seo.description" />
+    <Meta name="ogImage" :content="data.post.seo[0].seo.image.url" />
+  </Head>
   <PostHero v-if="data">
     <h1 class="text-h2">{{ data.post.titlePost }}</h1>
     <v-btn color="success" variant="tonal" :to="'/' + data.post.postCategory.categorySlug">

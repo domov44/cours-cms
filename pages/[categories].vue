@@ -1,6 +1,12 @@
 <template v-if="route && !pending">
+  <Head v-if="!pending">
+    <Title> {{ `Nexinu - ${data.category.seo[0].seo.title}` }}</Title>
+    <Meta name="description" :content="data.category.seo[0].seo.description" />
+    <Meta name="ogTitle" :content="`La categorie - ${data.category.seo[0].seo.title}`" />
+    <Meta name="ogDescription" :content="data.category.seo[0].seo.description" />
+    <Meta name="ogImage" :content="data.category.seo[0].seo.image.url" />
+  </Head>
   <Hero v-if="data">
-    <SeoMeta v-if="!pending" :meta_seo="data.category"/>
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row">
       <div class="box" style="width:80%;">
         <h1 class="text-h2">Les articles de la catégorie {{ data.category.categoryLabel }}</h1>
@@ -22,7 +28,7 @@
             :to="category.categorySlug"> {{ category.categoryLabel }}
           </v-btn>
         </div>
-        <div  class="v-grid">
+        <div class="v-grid">
           <v-card v-for="post in filteredPosts" :key="post.id" width="350" outlined>
             <v-img height="200" :alt="post.seo[0].seo.image.alt" :src="post.seo[0].seo.image.url" cover></v-img>
             <v-card-title>{{ post.titlePost }}</v-card-title>

@@ -1,7 +1,13 @@
 <template>
+  <Head v-if="!homePending">
+    <Title> {{ `Nexinu - ${homeData.home.seo[0].seo.title}` }}</Title>
+    <Meta name="description" :content="homeData.home.seo[0].seo.description" />
+    <Meta name="ogTitle" :content="homeData.home.seo[0].seo.title" />
+    <Meta name="ogDescription" :content="homeData.home.seo[0].seo.description" />
+    <Meta name="ogImage" :content="homeData.home.seo[0].seo.image.url" />
+  </Head>
   <Hero v-if="homeData && homeData.home && homeData.home.content" v-for="(content, index) in homeData.home.content"
     :key="index">
-    <SeoMeta v-if="!pending" :meta_seo="homeData.home"/>
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
       :class="{ 'd-flex flex-column justify-space-between align-center flex-md-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
       v-if="content.__typename === 'LeftRightRecord'">
@@ -133,12 +139,4 @@ import Home from '@/cms/queries/home'
 import { formatPostDate } from '@/functions/DatePost.js';
 const { data, pending, error, refresh } = await useLazyAsyncQuery(Posts)
 const { data: homeData, pending: homePending, error: homeError, refresh: homeRefresh } = await useLazyAsyncQuery(Home);
-
-const { pageTitle } = defineProps(['pageTitle'])
-
-// Utilisez pageTitle pour définir le titre de la page
-useHead({
-    title: pageTitle,
-})
-
 </script>

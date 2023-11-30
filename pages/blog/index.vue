@@ -1,7 +1,13 @@
 <template>
+  <Head v-if="!blogPending">
+    <Title> {{ `Nexinu - ${blogData.blog.seo[0].seo.title}` }}</Title>
+    <Meta name="description" :content="blogData.blog.seo[0].seo.description" />
+    <Meta name="ogTitle" :content="blogData.blog.seo[0].seo.title" />
+    <Meta name="ogDescription" :content="blogData.blog.seo[0].seo.description" />
+    <Meta name="ogImage" :content="blogData.blog.seo[0].seo.image.url" />
+  </Head>
   <Hero v-if="blogData && blogData.blog && blogData.blog.content" v-for="(content, index) in blogData.blog.content"
     :key="index">
-    <SeoMeta v-if="!pending" :meta_seo="blogData.blog"/>
     <v-container class="d-flex flex-column justify-space-between align-center flex-md-row"
       :class="{ 'd-flex flex-column justify-space-between align-center flex-md-row-reverse': content.__typename === 'LeftRightRecord' && !content.mediaOnTheRight, 'justify-space-between align-center': content.__typename === 'LeftRightRecord' }"
       v-if="content.__typename === 'LeftRightRecord'">
