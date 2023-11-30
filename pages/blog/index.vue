@@ -1,6 +1,6 @@
 <template>
   <Head v-if="!blogPending">
-    <Title> {{ `Nexinu - ${blogData.blog.seo[0].seo.title}` }}</Title>
+    <Title> {{ blogData.blog.seo[0].seo.title }}</Title>
     <Meta name="description" :content="blogData.blog.seo[0].seo.description" />
     <Meta name="ogTitle" :content="blogData.blog.seo[0].seo.title" />
     <Meta name="ogDescription" :content="blogData.blog.seo[0].seo.description" />
